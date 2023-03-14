@@ -2,20 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
 
 class Comments extends Component
 {
-    public $comments = [
-        [
-            'body'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ratione vitae, deleniti aliquam minima magni aut dolor eius inventore accusamus! Amet dolores illo commodi, porro aliquid dignissimos! Sequi eveniet quo eius veritatis porro, placeat voluptatibus accusantium excepturi quia vero quasi aspernatur debitis repellat, nemo dicta consequuntur eligendi officiis sint dolor.',
-            'created_at'=>'3 mim ago',
-            'creator'=>'Sarthak'
-        ]
-    ];
+    public $comments = [];
 
     public $newComment;
+
+    public function mount()
+    {
+        $this->comments = Comment::all();
+    }
 
     public function addComment()
     {
@@ -28,6 +28,7 @@ class Comments extends Component
             'creator'=> 'Anonimius'
         ]);
     }
+
     public function render()
     {
         return view('livewire.comments');

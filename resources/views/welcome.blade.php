@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <livewire:comments/>
+    <livewire:comments />
 
     <livewire:scripts/>
 
